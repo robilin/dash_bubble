@@ -29,8 +29,10 @@ class BubbleService : FloatingBubbleService() {
 
 
 override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-    bubbleOptions = intent?.getParcelableExtra(Constants.BUBBLE_OPTIONS_INTENT_EXTRA)
-        ?: BubbleOptions.defaultOptions()
+    bubbleOptions = intent?.getParcelableExtra(Constants.BUBBLE_OPTIONS_INTENT_EXTRA) ?: BubbleOptions.defaultOptions()
+
+    bubbleOptions = intent?.getParcelableExtra(Constants.BUBBLE_OPTIONS_INTENT_EXTRA) ?: BubbleOptions.defaultOptions()
+
 
     notificationOptions = intent?.getParcelableExtra(Constants.NOTIFICATION_OPTIONS_INTENT_EXTRA)
         ?: NotificationOptions.defaultOptions()
