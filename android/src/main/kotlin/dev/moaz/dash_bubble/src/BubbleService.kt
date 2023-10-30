@@ -17,15 +17,29 @@ class BubbleService : FloatingBubbleService() {
     /** This method is called when the service is started
      * It initializes the bubble with the options passed to from the intent and starts the service.
      */
+    // override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+    //     bubbleOptions = intent?.getParcelableExtra(Constants.BUBBLE_OPTIONS_INTENT_EXTRA)!!
+    //     notificationOptions = intent.getParcelableExtra(Constants.NOTIFICATION_OPTIONS_INTENT_EXTRA)!!
+
+    //     showBubbles()
+    //     showNotification()
+
+    //     return super.onStartCommand(intent, flags, startId)
+    // }
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        bubbleOptions = intent?.getParcelableExtra(Constants.BUBBLE_OPTIONS_INTENT_EXTRA)!!
-        notificationOptions = intent.getParcelableExtra(Constants.NOTIFICATION_OPTIONS_INTENT_EXTRA)!!
+    bubbleOptions = intent?.getParcelableExtra(Constants.BUBBLE_OPTIONS_INTENT_EXTRA)
+        ?: BubbleOptions.defaultOptions()
 
-        showBubbles()
-        showNotification()
+    notificationOptions = intent?.getParcelableExtra(Constants.NOTIFICATION_OPTIONS_INTENT_EXTRA)
+        ?: NotificationOptions.defaultOptions()
 
-        return super.onStartCommand(intent, flags, startId)
-    }
+    showBubbles()
+    showNotification()
+
+    return super.onStartCommand(intent, flags, startId)
+}
+
 
     /** This method is called when the service is created.
      * It is setting the initial route of the bubble to be empty to avoid calling setupBubble method automatically.
