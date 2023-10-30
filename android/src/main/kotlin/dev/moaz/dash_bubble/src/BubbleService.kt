@@ -27,7 +27,8 @@ class BubbleService : FloatingBubbleService() {
     //     return super.onStartCommand(intent, flags, startId)
     // }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+
+override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
     bubbleOptions = intent?.getParcelableExtra(Constants.BUBBLE_OPTIONS_INTENT_EXTRA)
         ?: BubbleOptions.defaultOptions()
 
@@ -39,7 +40,6 @@ class BubbleService : FloatingBubbleService() {
 
     return super.onStartCommand(intent, flags, startId)
 }
-
 
     /** This method is called when the service is created.
      * It is setting the initial route of the bubble to be empty to avoid calling setupBubble method automatically.
