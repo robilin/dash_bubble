@@ -14,7 +14,7 @@ class BroadcastListener(channel: MethodChannel) : BroadcastReceiver() {
 
             /** This method is called when the bubble is tapped */
             Constants.ON_TAP -> {
-                channel.invokeMethod(Constants.ON_TAP, null)
+                channel.invokeMethod(Constants.ON_TAP, getAppLaunched(intent))
             }
 
             /** This method is called when the bubble is tapped down (pressed) */
@@ -47,4 +47,18 @@ class BroadcastListener(channel: MethodChannel) : BroadcastReceiver() {
             Constants.Y_AXIS_VALUE to intent.getDoubleExtra(Constants.Y_AXIS_VALUE, 0.0)
         )
     }
+
+    private fun getAppLaunched(context: Context, intent: Intent): Boolean {
+    val appLaunched = intent.getBooleanExtra(Constants.APP_LAUNCHED, false)
+
+    if (appLaunched) {
+        // Bring the app to the foreground by launching the main activity
+        val launchIntent = context.packageManager.getLaunchIntentForPackage(context.packageName)
+        launchIntent?.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        context.startActivity(launchIntent)
+    }
+
+    return appLaunched
+}
+
 }

@@ -69,7 +69,7 @@ data class BubbleOptions(
                 bubbleSize = 100.0,
                 opacity = 1.0,
                 enableClose = true,
-                closeBehavior = 0, // replace with default value
+                closeBehavior = "closeBehavior", // replace with default value
                 distanceToClose = 50.0,
                 enableAnimateToEdge = true,
                 enableBottomShadow = true,
