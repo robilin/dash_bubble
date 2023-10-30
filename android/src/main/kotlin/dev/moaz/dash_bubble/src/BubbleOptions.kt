@@ -60,21 +60,20 @@ data class BubbleOptions(
          * Get default bubble options.
          * @return The default bubble options.
          */
-        fun defaultOptions(): BubbleOptions {
+          fun defaultOptions(): BubbleOptions {
             return BubbleOptions(
-                call.argument(Constants.BUBBLE_ICON),
-                call.argument(Constants.CLOSE_ICON),
-                call.argument(Constants.START_LOCATION_X),
-                call.argument(Constants.START_LOCATION_Y),
-                call.argument(Constants.BUBBLE_SIZE),
-                call.argument(Constants.OPACITY),
-                call.argument(Constants.ENABLE_CLOSE),
-                call.argument(Constants.CLOSE_BEHAVIOR),
-                call.argument(Constants.DISTANCE_TO_CLOSE),
-                call.argument(Constants.ENABLE_ANIMATE_TO_EDGE),
-                call.argument(Constants.ENABLE_BOTTOM_SHADOW),
-                call.argument(Constants.KEEP_ALIVE_WHEN_APP_EXIT)
-            )
-        }
+                bubbleIcon = "bubbleIcon",
+                closeIcon = "closeIcon",
+                startLocationX = 0.0,
+                startLocationY = 0.0,
+                bubbleSize = 100.0,
+                opacity = 1.0,
+                enableClose = true,
+                closeBehavior = 0, // replace with default value
+                distanceToClose = 50.0,
+                enableAnimateToEdge = true,
+                enableBottomShadow = true,
+                keepAliveWhenAppExit = false
+          
     }
 }
